@@ -15,11 +15,15 @@ Extract the contents of the zip to the BambooInvoice root directory (overwriting
 
 Execute the following MySQL query on your server (replacing table names with your table names):
 
+```
 ALTER TABLE bamboo_invoices ADD COLUMN recur_interval INT(11);
 ALTER TABLE bamboo_settings ADD google_merchant_id VARCHAR(255),
 ADD paypal_email VARCHAR(255);
+```
 
 Using crontab (or a similar program) setup the recur function to be executed every day. Here is an example crontab file:
+```
 # m h  dom mon dow   command
 30 3 * * * wget http://www.mywebsite.com/bamboodir/index.php/recur
 31 3 * * * rm -rf recur
+```
